@@ -8,6 +8,10 @@
 
 .logo {
   width: 61px;
+
+}
+.logoImg {
+    border-radius: 50%;
 }
 
 .logo a {
