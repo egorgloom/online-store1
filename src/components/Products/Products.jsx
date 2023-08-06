@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "../../styles/Products.module.css";
 import { IMAGE_PRODUCTS } from "../../utils/constants";
 
-export default function Products({ title, products=[]}) {
+export default function Products({ title, products}) {
     const list = products.filter((_, i) => i < 5)
 
   return (

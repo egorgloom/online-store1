@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 
 export default function Sidebar() {
-  const list = useSelector((state) => state.categories.list)
+  const list = useSelector((state) => state.categories.cat)
 
 
   return (

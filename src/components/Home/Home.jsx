@@ -10,17 +10,17 @@ import { useEffect } from 'react';
 import { filteredByPrice } from '../../features/categories/productsSlice';
 
 export default function Home() {
+const dispatch = useDispatch();
+  // const {products: {list, filtered}, categories} = useSelector((state) => state );
 
-  const {products: {list, filtered}, categories} = useSelector((state) => state );
-
-
-  const dispatch = useDispatch();
+  const {list} = useSelector(({products}) => products)
+  const {filtered} = useSelector(({products}) => products)
+  const {cat} = useSelector(({categories}) => categories)
 
 
     useEffect(()=> {
         if(!list.length) return;
-
-        dispatch(filteredByPrice(100))
+        dispatch(filteredByPrice(500))
     }, [dispatch, list.length])
 
 
@@ -28,8 +28,8 @@ export default function Home() {
     <>
       <Poster />
       <Products products={list} title='Trending'/>
-      <Categories categories={categories.list} title='Worth seeing'/>
-      <Products products={filtered} title='Less than 100'/>
+      <Categories categories={cat} title='Worth seeing'/>
+      <Products products={filtered} title='Less than 500$'/>
     </>
   )
 }

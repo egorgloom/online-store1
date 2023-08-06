@@ -16,7 +16,7 @@ export default function AppRouter() {
     <>
       <Routes>
         <Route index element={<Home />} />
-        <Route path={ROUTES.PRODUCT} element={<SingleProduct/>} />
+        <Route path={ROUTES.PRODUCT} element={<SingleProduct />} />
       </Routes>
     </>
   )
