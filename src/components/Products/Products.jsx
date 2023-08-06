@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import styles from "../../styles/Products.module.css";
 import { IMAGE_PRODUCTS } from "../../utils/constants";
 
-export default function Products({ title, products}) {
+export default function Products({ title, products=[]}) {
+    const list = products.filter((_, i) => i < 5)
 
   return (
     <section className={styles.products}>
       {title && <h2>{title}</h2>}
 
       <div className={styles.list}>
-        {products.map(({ id, title, category: { name: cat }, price }) => (
+        {list.map(({ id, title, category: { name: cat }, price }) => (
           <Link to={`/products/${id}`} key={id} className={styles.product}>
             <div
               className={styles.image}

@@ -10,7 +10,7 @@ export const getProducts = createAsyncThunk(
     'products/getProducts',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get(`${BASE_URL}/products?limit=5&offset=0`);
+            const response = await axios.get(`${BASE_URL}/products`);
             return response.data
         } catch (error) {
             console.log(error)
@@ -23,8 +23,15 @@ export const productsSlice = createSlice({
     name: 'products',
     initialState: {
         list: [],
+        filtered: [],
         isLoading: false
     },
+    reducers: {
+        filteredByPrice: (state, {payload}) => {
+            state.filtered = state.list.filter(({price}) => price > payload)
+        }
+    },
+
     extraReducers: (builder) => {
         builder
         .addCase(getProducts.pending, (state) => {
@@ -39,5 +46,5 @@ export const productsSlice = createSlice({
         })
     }
 })
-
+export const {filteredByPrice} = productsSlice.actions
 export default productsSlice.reducer;
