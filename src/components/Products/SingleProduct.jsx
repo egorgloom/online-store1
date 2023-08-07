@@ -10,8 +10,6 @@ export default function SingleProduct() {
   const navigate = useNavigate();
   const {data, isFetching, isLoading, isSuccess} = useGetProductQuery({id});
 
-  console.log(data)
-
   useEffect(() => {
     if (!isFetching && !isLoading && !isSuccess) {
       navigate(ROUTES.HOME);

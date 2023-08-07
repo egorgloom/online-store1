@@ -5,12 +5,21 @@ import { ROUTES } from "../../utils/routes";
 
 import styles from "../../styles/Product.module.css";
 import { IMAGE_PRODUCTS } from "../../utils/constants";
+import { addToCart } from "../../features/user/userSlice";
+import { useDispatch } from 'react-redux';
+
+
 
 
 
 
 export default function Product(item) {
   const { title, price, description } = item;
+  const dispatch = useDispatch()
+
+  const addItemToCart = () => {
+    dispatch(addToCart(item))
+}
 
   return (
     <section className={styles.product}>
@@ -32,6 +41,7 @@ export default function Product(item) {
         <div className={styles.actions}>
           <button
             className={styles.add}
+            onClick={addItemToCart}
           >
             Add to cart
           </button>
